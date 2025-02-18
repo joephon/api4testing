@@ -70,7 +70,7 @@ function withToken(excludes = []) {  // /api/admin/login", "/api/mina/login"]
     if (which === 'admin') Model = DB.Admin
     if (which === 'mina') Model = DB.User
     
-    const { data:  [currentUser]} = await Model.where({_id: decoded.data}).get()
+    const currentUser = await Model.findOne({_id: decoded.data})
     if (!currentUser) {
         return res.json(R.deny('ACEESS TOKEN INVALID'))
     }

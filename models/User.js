@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-const { list } = require('../utils/list')
+const list = require('../utils/list')
 
 const { Schema } = mongoose
 

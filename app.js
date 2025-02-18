@@ -16,7 +16,7 @@ app.use(withToken(["/api/admin/login", "/api/mina/login"]))
 
 // mina
 app.post('/api/mina/login', mina.login)
-
+app.post('/api/mina/qa', mina.qa)
 
 // admin
 app.post('/api/admin/login', admin.login)
