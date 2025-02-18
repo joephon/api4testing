@@ -6,7 +6,7 @@ const { Schema } = mongoose
 const schema = new Schema(
   {
     nickName: { type: String, default: '微信用户' }, // 用户昵称
-    openID:{ type: String, default: '微信用户' }, // wx openid
+    openID:{ type: String, default: 'wx_openid' }, // wx openid
     extend: { type: Object, default: {} }, // 拓展字段
     active: { type: Boolean, default: false }, // 是否激活
     lock: { type: Boolean, default: false }, // 是否冻结
