@@ -1,0 +1,32 @@
+version: '3'
+
+networks:
+ test_test:
+  #  external: true
+
+services:
+  db:
+    image: mongo:8.0
+    container_name: db4testing
+    ports:
+      - 27017:27017
+    volumes:
+      - ./data:/data/db
+    networks:
+      - test_test
+
+  api_server:
+    image: api4testing
+    container_name: 'api4testing'
+    ports:
+      - '30000:30000'
+    restart: 'always'
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    env_file:
+      - .env
+    networks:
+      - test_test
+    depends_on:
+      - db
+
