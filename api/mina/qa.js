@@ -44,13 +44,13 @@ async function match(req, res) {
     }).save()
   })
 
-  const ll = await Location.find({}).sort({ createdAt: -1 })
-  console.log(22222, ll)
+  // 拿最新的三个问卷定位去匹配
+  const ll = await Location.find({}).limit(3).sort({ createdAt: -1 })
 
   // core logic, try to match the one via location
   const maxDistance = 3000; // 3000米
   const points = await Promise.all(ll.map(async i => {
-    const p = await Location.find({
+    const p = await Location.findOne({  // 每次只匹配一个最接近的
       // 真实匹配应该过滤掉自己  belongsTo: { $ne: req.currentUser._id },
       location: {
         $near: {
