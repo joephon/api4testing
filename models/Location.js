@@ -12,7 +12,8 @@ const locationSchema = new Schema(
 
 const schema = new Schema(
   {
-    name: { type: String, required: true }, // 名称
+    name: { type: String, required: true }, // 位置名称
+    qaID: { type: String, required: true }, // 从属于哪个qa id
     belongsTo: { type: String, required: true }, // 用户 id
     location: locationSchema, // 位置信息
     extend: { type: Object, default: {} }, // 拓展字段
