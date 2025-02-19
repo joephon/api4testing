@@ -1,4 +1,4 @@
-const { ok, miss, invalid, _404 } = require('../../utils/response')
+const { ok, miss, invalid } = require('../../utils/response')
 const V = require('../../utils/validator')
 const { Location, Qa, Survey } = require('../../models')
 
@@ -24,9 +24,6 @@ async function match(req, res) {
     return res.json(invalid('QA'))
   }
 
-  // await Survey.deleteMany({})
-  // await Location.deleteMany({})
-
   // save qa list as survey
   await new Survey({ qa, belongsTo: req.currentUser._id }).save()
 
@@ -45,7 +42,7 @@ async function match(req, res) {
   })
 
   // 拿最新的三个问卷定位去匹配
-  const ll = await Location.find({}).limit(3).sort({ createdAt: -1 })
+  const ll = await Location.find({ belongsTo: req.currentUser._id }).limit(3).sort({ createdAt: -1 })
 
   // core logic, try to match the one via location
   const maxDistance = 3000; // 3000米

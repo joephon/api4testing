@@ -3,13 +3,6 @@ const list = require('../utils/list')
 
 const { Schema } = mongoose
 
-// const locationSchema = new Schema(
-//   {
-//     type: { type: String, default: 'Point' },
-//     coordinates:{ type: [Number], require: true  }, // 经纬度
-//   },
-// );
-
 const schema = new Schema(
   {
     name: { type: String, required: true }, // 位置名称

@@ -1,6 +1,6 @@
 const request = require('request')
-const { verifyPwd, createPwd, signJwt } = require('../../utils/helper')
-const { ok, miss, invalid, _404 } = require('../../utils/response')
+const { signJwt } = require('../../utils/helper')
+const { ok, miss, invalid } = require('../../utils/response')
 const V = require('../../utils/validator')
 const { User } = require('../../models')
 const config = require('../../config')
